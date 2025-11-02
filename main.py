@@ -9,14 +9,17 @@ catSprite = pygame.image.load('cat 1.svg')
 catWidth, catHeight = 80, 85
 catSprite = pygame.transform.scale(catSprite, (catWidth, catHeight))
 flippedCatSprite = pygame.transform.flip(catSprite, True, False)
-backgroundSprite = pygame.image.load('background 2.jpeg')
+backgroundSprite = pygame.image.load('background1.jpg')
+original_width, original_height = backgroundSprite.get_size()
+scaledHeight = original_height / original_width * 1100
+backgroundSprite = pygame.transform.scale(backgroundSprite, (1100, scaledHeight))
 platform1 = PlatformSprite('platform1.png', 220, 30, 100, 340, 0.08)
 platform2 = PlatformSprite('platform2.png', 220, 30, 270, 220, 0.09)
 platform3 = PlatformSprite('platform3.png', 220, 30, 500, 120, -0.06)
 platform4 = PlatformSprite('platform2.png', 220, 30, 800, -40, -0.15)
 platform5 = PlatformSprite('platform3.png', 220, 30, 900, -180, 0.12)
 platformList = [platform1, platform2, platform3, platform4, platform5]
-groundLevel = 475
+groundLevel = 573
 catX, catY = 50, groundLevel - catHeight
 catSpeed = 0.15
 catYSpeed = 0
@@ -52,7 +55,7 @@ while True:
               catY = catY - 1
               catYSpeed = 0.8
     screen.fill("white")
-    screen.blit(backgroundSprite, (0, -1137 + screenYShift))
+    screen.blit(backgroundSprite, (0, 0 + screenYShift))
     landing = False
     for p in platformList:
         p.move(screen, screenYShift)
